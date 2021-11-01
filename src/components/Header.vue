@@ -21,7 +21,13 @@
 		</div>
         <div class="home-top">
         <div class="home-item" >
-            <img v-lazy="login" v-cloak  class="login">
+            <div>
+                <img v-lazy="login" v-cloak  class="login">
+                <div>
+                  <span>检验检测机构共享服务平台</span>
+                  <span>INSPECTION AND TESTING ORGANIZATION SERVICE PLATFORM</span>
+                </div>
+            </div>
             <div>
               <input type="text" v-model="inputVal" 
               placeholder="请输入关键字...">
@@ -101,7 +107,8 @@ export default {
       this.$axios({
           url:'/index',
       }).then(res => {
-        this.login = res.data.head.logo
+        console.log(res,'123');
+        this.login = res.data.footer.left_image
         this.topNotice =res.data.head.topNotice
         this.topOaurl = res.data.head.topOaurl
         this.topEmail = res.data.head.topEmail
@@ -175,6 +182,40 @@ export default {
            height: 45px!important;
            margin-top: -18px!important;
            }
+           .home-item{
+      width: 1200px;
+      height: 90px;
+      background-color: #fff;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      >div:nth-child(1){
+        width: 520px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        .login{
+          width: 120px;
+          height: 120px;
+          margin: 25px 5px  0 0px;
+          vertical-align: middle;
+        }
+       >div:nth-child(2){
+         display: flex;
+         justify-content: space-around;
+         flex-direction: column;
+        >span:nth-child(1){
+          font-size: 30px;
+          margin-top: 0px!important;
+        }
+        >span:nth-child(2){
+          font-size: 12px;
+          margin-top: 5px;
+          color: #acabab;
+        }
+       }
+      }
+   }
     }
 	/deep/ .van-notice-bar__content{
 		font-size: 18px !important;
@@ -226,6 +267,7 @@ export default {
     }
     .el-menu--horizontal>.el-submenu .el-submenu__title{
       border-bottom: none!important;
+      font-size: 20px!important;
     }
     .el-menu--horizontal>.el-submenu.is-active .el-submenu__title{
       background-color: #F16A0C!important;
@@ -239,6 +281,7 @@ export default {
      text-align: center!important;
      width: 165px!important;
      margin: 0px !important;
+     font-size: 20px!important;
     }
     .el-menu--popup-bottom-start{
       width: 165px!important;
@@ -256,10 +299,9 @@ export default {
     }
     .el-menu--horizontal .el-menu .el-menu-item{
       display: flex!important;
-
       align-items: center;
       justify-content: center;
-      height: 55px;
+      height: 70px;
       line-height: 20px;
       overflow: hidden;
       white-space: pre-wrap;
@@ -270,21 +312,42 @@ export default {
 </style>
 <style lang='less' scoped>
 .home-top{
-    height: 65px;
     width: 100%;
     background-color: #fff;
     .home-item{
       width: 1200px;
-      height: 80px;
+      height: 90px;
       background-color: #fff;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      .login{
-        width: 465px;
-        height: 69px;
-        margin: 15px 20px 0 0px;
+      >div:nth-child(1){
+        width: 520px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        .login{
+          width: 120px;
+          height: 120px;
+          margin: 25px 5px  0 0px;
+          vertical-align: middle;
+        }
+       >div:nth-child(2){
+         display: flex;
+         justify-content: space-around;
+         flex-direction: column;
+        >span:nth-child(1){
+          font-size: 30px;
+          margin-top: 30px;
+        }
+        >span:nth-child(2){
+          font-size: 12px;
+          margin-top: 5px;
+          color: #acabab;
+        }
+       }
       }
+      
       div:nth-child(2){
         height: 30px;
         line-height: 30px;
@@ -341,6 +404,7 @@ export default {
   }
   .topone{
 		width: 100%;
+    height: 40px;
 		background-color: #dddddd;
     .topone-item{
     width: 1200px;

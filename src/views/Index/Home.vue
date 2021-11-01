@@ -33,7 +33,7 @@
    <div class="environment">
       <div class="environment-top">
          <div>环境监测机构专业技术人员能力提升培训</div>
-         <img src="../assets/HomeImage/go.png" alt=""  @click="goNotice">
+         <img src="../../assets/HomeImage/go.png" alt=""  @click="goNotice">
       </div>
       <div class="environment-content">
           <div class="content-item"  v-for="(item,index) in environmentList" :key="index">
@@ -81,7 +81,7 @@
    </div>
    <!-- 知识问答模块 -->
    <div class="knowledge">
-      <div class="knowledge-left">
+      <div class="knowledge-left" >
           <div class="left-top">
             <div id="zhishi">知识问答</div>
             <div id="morf" @click="morf">
@@ -89,7 +89,8 @@
             <span>+</span>
             </div>
           </div>
-          <div class="top-item" v-for="(item,index) in knowledgeList.slice(0,3)" :key="index" @click='goNoticeDetetails(item.id)'> 
+          <vue-seamless-scroll :data='knowledgeList' :class-option="classOption" class="table-content">
+            <div class="top-item" v-for="(item,index) in knowledgeList" :key="index" @click='goNoticeDetetails(item.id)'> 
              <div>   
                 <span>问</span>
                 <span>{{item.title}}</span>
@@ -99,6 +100,17 @@
                <span v-html="item.content" class="wenda-da" ref="kk" > </span>
              </div>
           </div>
+         </vue-seamless-scroll>
+          <!-- <div class="top-item" v-for="(item,index) in knowledgeList.slice(0,3)" :key="index" @click='goNoticeDetetails(item.id)'> 
+             <div>   
+                <span>问</span>
+                <span>{{item.title}}</span>
+             </div>
+             <div>
+               <span>答</span>
+               <span v-html="item.content" class="wenda-da" ref="kk" > </span>
+             </div>
+          </div> -->
       </div>
       <div class="knowledge-right">
          <div class="right-form" >
@@ -172,11 +184,11 @@
          </div>
          <div class="right-bottom">
             <div class="bottom-item" @click='goEnlist'>
-              <img src="../assets/HomeImage/people.png" alt="">
+              <img src="../../assets/HomeImage/people.png" alt="">
               <span> 增加人数</span>
             </div>
              <div class="bottom-item" @click='submit'>
-              <img src="../assets/HomeImage/Submit.png" alt="">
+              <img src="../../assets/HomeImage/Submit.png" alt="">
               <span>提交信息</span>
             </div>
          </div>
@@ -208,13 +220,13 @@
       :show-close="showClo">
       <div class="payPop-top">
           <div>
-            <img src="../assets/HomeImage/pay1.png" alt="">
-            <img src="../assets/HomeImage/pay2.png" alt="">
+            <img src="../../assets/HomeImage/pay1.png" alt="">
+            <img src="../../assets/HomeImage/pay2.png" alt="">
           </div>
           <div v-for="(item,index) in environmentList" :key="index" class="code">
              <img :src="item.qrcode" alt="" v-if="itemId - 1 == index" class="codeImg">
           </div>
-          <div class="footer" v-for="item in environmentList">
+          <div class="footer" v-for="(item,index) in environmentList" :key="index">
             <span>{{item.business}}</span>
             <span>商户编号：{{item.business_num}}</span>
           </div>
@@ -226,10 +238,10 @@
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import Swiper from '../components/Swiper.vue'
-import Footer from '../components/Footer.vue'
-import TopShow from '../components/TopShow.vue'
+import Header from '../../components/Header.vue'
+import Swiper from '../../components/Swiper.vue'
+import Footer from '../../components/Footer.vue'
+import TopShow from '../../components/TopShow.vue'
 
 export default {
   name: 'Home',
@@ -277,7 +289,20 @@ export default {
         link:[],
     }
   },
-
+ computed: {
+    classOption () {
+      return {
+         step: 0.5, // 数值越大速度滚动越快
+         limitMoveNum: 2, // 开始无缝滚动的数据量 this.dataList.length
+         hoverStop: true, // 是否开启鼠标悬停stop
+         direction: 1, // 0向下 1向上 2向左 3向右
+         openWatch: true, // 开启数据实时监控刷新dom
+         singleHeight: 0, // 单步运动停止的高度(默认值0是无缝不停止的滚动) direction => 0/1
+         singleWidth: 0, // 单步运动停止的宽度(默认值0是无缝不停止的滚动) direction => 2/3
+         waitTime: 1000 // 单步运动停止的时间(默认值1000ms)
+      }
+    }
+  },
   created(){
     //获取首页轮播图
     this.$axios({
@@ -494,7 +519,7 @@ export default {
 </style>
 <style lang='less' scoped>
 	
-@import url('../assets/style/style.less');
+@import url('../../assets/style/style.less');
  img[data-v-07a952a8]{
     height: 800px!important;
     background-position: center center;

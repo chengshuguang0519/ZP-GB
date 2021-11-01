@@ -9,7 +9,7 @@ VueRouter.prototype.push = function push(location) {
 
 // 引入首页文件
 const Home = () =>
-    import ('../views/Home.vue')
+    import ('../views/Index/Home.vue')
     // 引入关于文件
 const Introduction = () =>
     import ('../views/About/Introduction.vue')
@@ -251,11 +251,12 @@ const routes = [{
 }]
 
 const router = new VueRouter({
+    routes,
     mode: 'history',
     base: process.env.BASE_URL,
     // 路由跳转页面在最顶部显示
     scrollBehavior: () => ({ y: 0 }),
-    routes
+
 })
 
 export default router

@@ -24,6 +24,10 @@ Vue.prototype.$bus = new Vue()
 import VueLazyload from 'vue-lazyload'
 Vue.use(VueLazyload)
 
+//无缝滚动
+import scroll from 'vue-seamless-scroll'
+Vue.use(scroll)
+
 import { request } from './network/request'
 Vue.prototype.$axios = request
 
