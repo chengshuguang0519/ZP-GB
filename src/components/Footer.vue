@@ -65,7 +65,7 @@ export default {
        this.$router.push('/index')
      },
      goIntroduction(){
-         this.$router.push('/introduction')
+         this.$router.push('/about')
      },
      goConsulting(){
         this.$router.push('/consulting/apply')

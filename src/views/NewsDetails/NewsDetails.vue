@@ -12,7 +12,8 @@
           </div>
       </div>
       <div class="details-content">
-          <p class="title" style="">{{itemList.title}}</p><hr style="color:#0D3471;">
+          <p class="title" style="">{{itemList.title}}</p>
+          <!-- <hr style="border: none;height: 1px;background-color: red;"> -->
           <p class="normal" v-html="itemList.content"></p>         
       </div>
       <div>
@@ -129,6 +130,11 @@ export default {
 </script>
 
 <style lang='less' scoped>
+/deep/hr{
+    border: none;
+    height: 1px;
+    background-color: #e03e2d;
+}
 .details-top{
     width: 1200px;
     margin: 0 auto;
@@ -144,16 +150,16 @@ export default {
     margin: 0 auto;
     margin-bottom: 150px;
     .title{ 
-      font-size:21px;
-      margin: 20px 0 6px;
+      font-size:35px;
+      margin: 50px 0 30px;
+
       text-align: center;
-      color:#0D3471;
+      color:#e03e2d;
     }
     .normal{
         margin-top:20px;
         font-size: 21px;
         line-height: 38px;
-        color: #999;
     }
     .blod{
        margin-top:20px;

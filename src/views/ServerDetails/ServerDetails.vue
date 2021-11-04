@@ -11,7 +11,7 @@
                   <img :src="image" alt="">
               </div>
               <div class="item-right">
-                  <span>{{title}}</span>
+                  <span :title="title">{{title}}</span>
                   <span v-html="content" class="right-content-item"></span>
                   <!-- <span>在线咨询</span> -->
               </div>

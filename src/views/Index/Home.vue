@@ -21,7 +21,7 @@
           <div>
             <div class="right-item" v-for="(item,index) in swiperBottomContent" :key="index">
                   <div @click='goNoticeDet(item.id)'>
-                     <span>{{item.title}}</span>
+                     <span :title="item.title">{{item.title}}</span>
                      <span>发布时间:{{item.createtime}}</span>  
                   </div>              
             </div>
@@ -40,7 +40,7 @@
               <div>{{item.title}}</div>
               <div>
                 <div><img :src="item.image" alt=""></div>   
-                <div>{{item.description}}</div>
+                <div :title="item.description">{{item.description}}</div>
                 <div @click='goPay(item.id)'>立即购买</div>
               </div>
           </div>
@@ -93,11 +93,11 @@
             <div class="top-item" v-for="(item,index) in knowledgeList" :key="index" @click='goNoticeDetetails(item.id)'> 
              <div>   
                 <span>问</span>
-                <span>{{item.title}}</span>
+                <span :title="item.title">{{item.title}}</span>
              </div>
              <div>
                <span>答</span>
-               <span v-html="item.content" class="wenda-da" ref="kk" > </span>
+               <span v-html="item.content" class="wenda-da" ref="kk" :title="item.content" > </span>
              </div>
           </div>
          </vue-seamless-scroll>

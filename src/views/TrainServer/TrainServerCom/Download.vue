@@ -13,7 +13,7 @@
          <img src="../../../assets/AboutImage/aside1.png" alt="">
        </div>
        <div>
-         <span class="right-content-title">{{item.title}}</span>
+         <span class="right-content-title" :title="item.title">{{item.title}}</span>
          <span class="right-content-dec" v-html="item.description"></span>
          <span v-html="item.content" class="right-content-item"></span>
          <span @click="goNewsDet(item.id)">详情</span>

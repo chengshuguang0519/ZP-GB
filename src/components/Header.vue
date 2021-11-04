@@ -197,7 +197,7 @@ export default {
         .login{
           width: 120px;
           height: 120px;
-          margin: 25px 5px  0 0px;
+          margin: 20px 5px  0 0px;
           vertical-align: middle;
         }
        >div:nth-child(2){

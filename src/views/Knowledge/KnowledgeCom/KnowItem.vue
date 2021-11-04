@@ -13,7 +13,7 @@
          <img :src="item.image" alt="">
        </div>
        <div>
-         <span class="right-content-title">{{item.title}}</span>
+         <span class="right-content-title" :title="item.title">{{item.title}}</span>
          <span v-html="item.description" class="right-content-dec"></span>
          <span v-html="item.content" class="right-content-item"></span>
          <span @click="goNoticeDet(item.id)">详情</span>
