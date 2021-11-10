@@ -12,7 +12,7 @@
               </div>
               <div class="item-right">
                   <span :title="title">{{title}}</span>
-                  <span v-html="content" class="right-content-item"></span>
+                  <span v-html="content" class="right-content-item" :title="content"></span>
                   <!-- <span>在线咨询</span> -->
               </div>
           </div>
@@ -41,6 +41,9 @@
               </div>
           </div>
       </div>
+     <div class="chooseMe">
+        <img :src="service_image" alt="">
+     </div>
       <!-- 法规依据模块 -->
       <div class="basis">
         <div class="basis-top">
@@ -116,7 +119,8 @@ export default {
            processList:['需求沟通','现状调研','方案报价','签订合同','标准导入、体系编写、运行指导、内审管评、模拟评审、整改指导','售后服务'],
            processIndex:0,
            statuteList:[],
-           statuteIndex:'',         
+           statuteIndex:'',  
+           service_image:''       
         }
     },
 
@@ -161,12 +165,15 @@ export default {
               id:this.id
          }
        }).then(res =>{
+         console.log(res,'res1')
           this.title = res.data.title 
           this.form.project =this.title 
           this.content = res.data.content
           this.image = res.data.image
           this.serverList = res.data.service_modular  
           this.statuteList =res.data.statute
+          this.service_image = res.data.service_image
+
       })
       },   
       processChange(index){
@@ -185,9 +192,9 @@ export default {
       this.id = this.$route.params.id
       this.$axios({
         url:"Index/back_mobile",
-       }).then(res => {
-       this.phone = res.data
-      })
+        }).then(res => {
+          this.phone = res.data
+       })
       this.getData()
     },
     watch: {
@@ -233,8 +240,7 @@ export default {
       .el-radio-group{
         width: 40%!important;
       }
-    }
-   
+    } 
   }
 }
 
@@ -404,6 +410,15 @@ export default {
             }
           }
         }
+    }
+    .chooseMe{
+      width: 1200px;
+      margin: 50px auto;
+      text-align: left;
+      >img{
+        width: 1200px;
+     
+      }
     }
     .basis{
        width: 1200px;

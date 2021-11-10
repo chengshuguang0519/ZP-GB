@@ -11,11 +11,11 @@
          
 			</div>
 			<div class=topone-right>
-				<span @click="tuiao">OA办公登录系统</span>
+				<span @click="tuiao">内部办公系统</span>
 				<span>
 					| 
 				</span>
-				<span>企业邮箱:{{topEmail}}</span>
+				<span>内部邮箱:{{topEmail}}</span>
 			</div>
       </div>
 		</div>
@@ -116,6 +116,7 @@ export default {
       this.$axios({
           url:'/index/NewConsultService',
       }).then(res => {
+        console.log(res.data,'header');
          this.itemList = res.data
          this.itemList.forEach(v=>{
            return v.path = this.path+v.id
@@ -329,7 +330,7 @@ export default {
         .login{
           width: 120px;
           height: 120px;
-          margin: 25px 5px  0 0px;
+          margin: 22px 5px  0 0px;
           vertical-align: middle;
         }
        >div:nth-child(2){

@@ -33,6 +33,10 @@ Vue.prototype.$axios = request
 
 Vue.config.productionTip = false
 
+
+//取消项目中所有的日志和警告
+Vue.config.silent = true
+
 router.beforeEach((to, from, next) => {
     document.title = '中培国实（北京）检验检测技术研究院'
     next()

@@ -19,7 +19,7 @@
               <div>
                   <span class="right-content-title" :title="item.title">{{item.title}}</span>
                   <span v-html="item.description" class="right-content-dec"></span>
-                  <span v-html="item.content" class="right-content-item"></span>
+                  <span v-html="item.content" class="right-content-item" :title="item.content"></span>
               </div>
             <img src="../../../assets/PynamicImage/confim.png" alt=""  @click='goNewsDetails(item.id)' >
           </div>

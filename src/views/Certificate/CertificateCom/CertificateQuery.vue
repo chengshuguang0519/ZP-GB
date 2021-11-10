@@ -70,10 +70,24 @@ export default {
     },
     created(){
         this.itemList = JSON.parse(localStorage.getItem('data')) 
+        this.getItem()
     },
     methods:{
         goBack(){
             this.$router.go(-1)
+        },
+        getItem(){
+            this.$axios({
+                url:'/index/search_cert',
+                method:'POST',
+                data:{
+                name:localStorage.getItem('name'),
+                cardnum:localStorage.getItem('cardNum')
+              }
+             }).then(res => {
+                 console.log(res)
+                 this.itemList = res.data
+             })      
         }
     },
     Destroy(){
@@ -88,7 +102,7 @@ export default {
             width: 100%;
             height: 80px;
             line-height: 80px;
-            font-size: 36px;
+            font-size: 32px;
             text-align: center;
             background-color: #021F6E;
             color: #fff;
@@ -98,22 +112,22 @@ export default {
             height: 80px;
             line-height: 80px;
             margin: 0 auto;
-            font-size: 24px;
+            font-size: 23px;
             display: flex;
             text-align: center;
             justify-content: space-between;
             color: #021F6E;
             border-bottom: 1px dotted #999;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             span:nth-child(1){
-                margin-top: 5px;
+                margin-top: 8px;
             }
             span:nth-child(2){
-                width: 150px;
+                width: 136px;
                 height: 38px;
-                line-height: 35px;
+                line-height: 38px;
                 margin-top: 25px;
-                border-radius: 10px;
+                border-radius: 8px;
                 border: 1px solid #021F6E;
             }
         }
@@ -129,7 +143,7 @@ export default {
             border-radius: 15px;
             box-shadow: -1px 0px 1px 1px rgba(16,16,16,.1);
             div:nth-child(1){
-                font-size: 24px;
+                font-size: 23px;
                 margin: 20px ;
                 color: #333;
             }
@@ -147,7 +161,7 @@ export default {
                     height: 120px;
                     flex-direction: column;
                     justify-content: space-around;
-                    font-size: 24px;
+                    font-size: 21px;
                     color: #333;
                 }
                 div:nth-child(3){
@@ -175,16 +189,17 @@ export default {
             overflow: hidden;
             background-color: #F6F6F6;
             color: #333;
-            font-size: 24px;
+            font-size: 23px;
             border-radius: 15px;
             box-shadow: -1px 0px 1px 1px rgba(16,16,16,.1);
             div:nth-child(1){
                 margin: 34px 0 31px 11px;
+                
             }
             div:nth-child(2){
                 display: flex;
                 justify-content: space-around;
-
+                font-size: 21px;
                 span{
                     flex: 1;
                     margin-left:20px ;
@@ -196,8 +211,7 @@ export default {
             height: 387px;
             margin: 0 auto;
             margin-bottom: 63px;
-            overflow: hidden;
-            font-size: 24px;
+            overflow: hidden;  
             color: #333;
             border: 1px solid #eee;
             border-top: none;
@@ -205,17 +219,20 @@ export default {
             box-shadow: -1px 0px 1px 1px rgba(16,16,16,.1);
              div:nth-child(1){
                 margin: 34px 0 31px 11px;
+                font-size: 23px;
             }
             div:nth-child(2){
                 display: flex;
                 justify-content: space-around;
                 margin-top: -20px;
+                font-size: 21px;
                 div{
                     height: 100px;
                     display: flex;
                     flex-direction: column;
                 }
                 div:nth-child(1){
+                    font-size: 21px;
                     margin-left: 30px;
                     span{
                         margin: 10px 0;

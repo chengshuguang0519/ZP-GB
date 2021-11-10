@@ -20,6 +20,8 @@ const Certificate = () =>
     //证书查询详情
 const CertificateQuery = () =>
     import ('../views/Certificate/CertificateCom/CertificateQuery.vue')
+const CertificateQueryMore = () =>
+    import ('../views/Certificate/CertificateCom/CertificateQueryMore.vue')
 
 // 引入咨询服务
 const Consulting = () =>
@@ -128,6 +130,10 @@ const routes = [{
     path: '/certificatequery',
     name: 'Certificatequery',
     component: CertificateQuery
+}, {
+    path: '/certificatequeryMore',
+    name: 'certificatequeryMore',
+    component: CertificateQueryMore
 }, {
     path: '/about',
     component: Introduction,

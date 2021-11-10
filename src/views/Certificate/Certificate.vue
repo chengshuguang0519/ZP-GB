@@ -7,7 +7,7 @@
           v-model="userName">
         </el-input>
         <el-input
-          placeholder="请输入证书编号"
+          placeholder="请输入身份证号码或证书编号"
           v-model="CertificateNum">
         </el-input>
         <div class="submit" @click='goCertificateQuery'>
@@ -37,15 +37,20 @@ export default {
          cardnum:this.CertificateNum
        }
       }).then(res =>{
-        if(res.code == 0){
+        console.log(res);
+        if(res.code == 0){  
            this.$message({
             message:res.msg,
             type:'error'
            });
-        }else {
+        }else if(res.data.type ==1) {
             localStorage.setItem('data',JSON.stringify(res.data))
             this.$router.push('/certificatequery')  
+        }else {
+          localStorage.setItem('data',JSON.stringify(res.data))
+          this.$router.push('/certificatequeryMore')  
         }
+        
       }) 
     }
   }
@@ -98,7 +103,7 @@ export default {
    bottom: 130px;
    left:50%;
    transform: translate(-50%);
-   color: #fff;
+   color: #FFF;
  }
 }
 .el-input{

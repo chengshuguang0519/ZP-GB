@@ -224,11 +224,11 @@
             <img src="../../assets/HomeImage/pay2.png" alt="">
           </div>
           <div v-for="(item,index) in environmentList" :key="index" class="code">
-             <img :src="item.qrcode" alt="" v-if="itemId - 1 == index" class="codeImg">
+             <img :src="item.qrcode"  v-if="itemId==item.id" class="codeImg">
           </div>
           <div class="footer" v-for="(item,index) in environmentList" :key="index">
-            <span>{{item.business}}</span>
-            <span>商户编号：{{item.business_num}}</span>
+            <span v-if="itemId==item.id">{{item.business}}</span>
+            <span v-if="itemId==item.id">商户编号：{{item.business_num}}</span>
           </div>
       </div>
       <div class="payPop-footer">请使用支付宝或者微信支付</div>
@@ -332,6 +332,7 @@ export default {
    this.$axios({
      url:'/Index/MemberList',
    }).then(res =>{
+     console.log(res,'data')
      this.environmentList =res.data
    })
    //获取咨询服务数据
